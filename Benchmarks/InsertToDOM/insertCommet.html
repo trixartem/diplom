@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .comment__p {
+            font-family: textbook-light;
+            font-size: 16px;
+            line-height: 22px;
+            max-width: 900px;
+        }
+
+        .comment {
+            max-width: 900px;
+            margin-bottom: 40px;
+        }
+
+        .comment__top {
+            margin-bottom: 10px;
+        }
+
+        .comment__login {
+            display: inline-block;
+        }
+
+        .comment__login:first-letter {
+            color: #ff0000;
+        }
+
+        .comment__info {
+            font-size: 16px;
+            font-family: textbook-light;
+            line-height: 32px;
+        }
+
+        .comment__date {
+            display: inline-block;
+            opacity: .5;
+            margin-left: 10px;
+        }
+
+        .comment_type_pinned {
+            border: 3px solid #fc0;
+            padding: 20px 32px;
+            left: -32px;
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .comment__login_type_yandex:after {
+            content: 'Сотрудник Яндекса';
+            background: #fff0cc;
+            margin-left: 4px;
+            padding: 2px 8px;
+            font-size: 14px;
+        }
+
+        .comment_level_2 {
+            margin-left: 60px;
+            max-width: 840px;
+        }
+
+        .comment_level_3 {
+            margin-left: 120px;
+            max-width: 780px;
+        }
+
+        .comment__contents .image {
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <div class="radio">
+
+    </div>
+    <button class='calc' type=button>Calc</button>
+    <button class='reset' type=button onclick='reset()'>Reset</button>
+    <button class='autotest' type=button>Autotest</button>
+</form>
+<div class="result"></div>
+<div class="container"></div>
+<script src="insertComment.js"></script>
+</body>
+</html>
