@@ -1,0 +1,39 @@
+html
+    head
+        title= 'Flex box'
+        link(rel='stylesheet', href='flexbox.css')
+    body
+        div(class='container')
+            - for (var i = 0; i < 300; i++)
+                div(class='ex ex-1')
+                    - var n = 0
+                    while n < 10
+                        div(class= 'col-'+ n++ + ' col')= 1
+                div(class='ex ex-2')
+                    - var n = 0
+                    while n < 6
+                        div(class= 'col-'+ n++ + ' col')= 2
+                div(class='ex ex-3')
+                    - var n = 0
+                    while n < 4
+                        div(class= 'col-'+ n++ + ' col')= 3
+                div(class='ex ex-4')
+                    - var n = 0
+                    while n < 2
+                        div(class= 'col-'+ n++ + ' col')= 4
+                div(class='ex ex-6')
+                    - var n = 0
+                    while n < 2
+                        div(class= 'col-'+ n++ + ' col')= 5
+                div(class='ex ex-7')
+                    - var n = 0
+                    while n < 2
+                        div(class= 'col-'+ n++ + ' col')= 6
+                div(class='ex ex-8')
+                    - var n = 0
+                    while n < 2
+                        div(class= 'col-'+ n++ + ' col')= 7
+                div(class='ex ex-9')
+                    - var n = 0
+                    while n < 2
+                        div(class= 'col-'+ n++ + ' col')= 8

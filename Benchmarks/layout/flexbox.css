@@ -1,0 +1,65 @@
+/*
+Chromium 43 macosx
+    recalculate  84 ms
+    layout   180 ms
+    paint  9.984 ms
+    composite
+Safari macosx
+    recalculate  28 ms
+    layout   56 ms
+    paint  500 ms
+    composite
+*/
+.container {
+    max-width: 940px;
+    margin: 2rem auto;
+    font-family: Arial;
+}
+.ex {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+.col:nth-of-type(2n) {
+    background: rgba(255,0,0,.3);
+}
+.col:nth-of-type(2n + 1) {
+    background: rgba(255,0,0,.15);
+}
+.col {
+    display: flex;
+    display: -webkit-flex;
+    line-height: 3rem;
+    justify-content: center;
+    -webkit-justify-content: center;
+    text-align: center;
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+    padding: 0 10px;
+}
+
+.ex-5 .col-1 {
+    flex-grow: 4;
+    -webkit-flex-grow: 4;
+}
+
+.ex-6 .col-0 {
+    flex-grow: 2;
+    -webkit-flex-grow: 2;
+}
+
+.ex-7 .col-0 {
+    flex-grow: 3;
+    -webkit-flex-grow: 3;
+}
+
+.ex-8 .col-0 {
+    flex-grow: 5;
+    -webkit-flex-grow: 5;
+}
+
+.ex-9 .col-1 {
+    flex-grow: 5;
+    -webkit-flex-grow: 5;
+}

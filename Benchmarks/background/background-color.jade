@@ -1,0 +1,11 @@
+html
+    head
+        title= 'BG-color'
+        link(rel='stylesheet', href='background-color.css')
+    body
+        div(class='container')
+            - for (var i = 0; i < 300; i++)
+                div(class='row')
+                    - for (var j=0; j<19; j++)
+                        div(class='item item-' + j)
+

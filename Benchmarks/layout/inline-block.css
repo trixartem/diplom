@@ -1,0 +1,69 @@
+/*
+Chromium 43 macosx
+    recalculate  54
+    layout       88
+    paint        12
+    composite
+Safari macosx
+    recalculate  25
+    layout       49
+    paint        500 ms
+    composite
+*/
+.container {
+  max-width: 940px;
+  margin: 2rem auto;
+  font-family: Arial;
+}
+.ex {
+  margin-bottom: 1rem;
+}
+.col:nth-of-type(2n) {
+  background: rgba(255,0,0,0.3);
+}
+.col:nth-of-type(2n + 1) {
+  background: rgba(255,0,0,0.15);
+}
+.col {
+  display: inline-block;
+  line-height: 3rem;
+  text-align: center;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+.ex-0 .col {
+  width: 10%;
+}
+.ex-1 .col {
+  width: 16.666666666666668%;
+}
+.ex-2 .col {
+  width: 25%;
+}
+.ex-3 .col {
+  width: 50%;
+}
+.ex-4 .col-0 {
+  width: 67%;
+}
+.ex-4 .col-1 {
+  width: 33%;
+}
+.ex-5 .col-0 {
+  width: 80%;
+}
+.ex-5 .col-1 {
+  width: 20%;
+}
+.ex-6 .col-0 {
+  width: 90%;
+}
+.ex-6 .col-1 {
+  width: 10%;
+}
+.ex-7 .col-0 {
+  width: 20%;
+}
+.ex-7 .col-1 {
+  width: 80%;
+}

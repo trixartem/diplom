@@ -67,7 +67,7 @@
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(151,187,205,1)",
                 data: ["34.60", "64.40", "81.80", "95.00", "153.00", "289.00", "320.40", "309.60", "434.20", "407.40", "541.20", "690.00", "1026.60"]
-            }
+            },
 //          {
 //            label: "Float Desktop Mac OSX Yandex Browser",
 //                fillColor: "rgba(220,20,20,0.2)",
@@ -75,16 +75,17 @@
 //                pointColor: "rgba(220,20,20,0.1)",
 //            data: ["3.80","0.40","1.00","1.20","2.20","2.80","3.60","4.40","5.60","5.00","6.20","7.40","13.60","14.20","16.80","22.00","25.00"]
 //          },
-            //         {
-            //             label: "nexus 4",
-            //             fillColor: "rgba(51,187,205,0.2)",
-            //             strokeColor: "rgba(51,187,205,1)",
-            //             pointColor: "rgba(51,187,205,1)",
-            //             pointStrokeColor: "#fff",
-            //             pointHighlightFill: "#fff",
-            //             pointHighlightStroke: "rgba(151,187,205,1)",
-            //             data: ["3.80","6.80","13.00","15.80","27.80","33.00","43.80","49.80","58.40","70.60","75.40","85.40","146.20","175.00","219.40","257.80","295.00"]
-            //         },
+             {
+                 label: "nexus 4",
+                 fillColor: "rgba(51,187,205,0.2)",
+                 strokeColor: "rgba(51,187,205,1)",
+                 pointColor: "rgba(51,187,205,1)",
+                 pointStrokeColor: "#fff",
+                 pointHighlightFill: "#fff",
+                 pointHighlightStroke: "rgba(151,187,205,1)",
+                     //[100,      200,     400,     500,     1000,     1200,      1500,    1800,     2000,      2200,     2700,     3000,       5000]
+                 data: ["286.20","540.60","1000.80","1344.60","2467.80","3356.60","3901.80","4949.00","5338.20","6421.40","7000.20","8848","12995.5"]
+             },
 //          {
 //          label: "IPad mini 2",
 //                fillColor: "rgba(11,187,205,0.2)",
@@ -243,7 +244,7 @@
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [617.92,776.38,693.00,673.08]
+                data: [617.92, 776.38, 693.00, 673.08]
             },
             {
                 label: "Desktop Mac OSX FF",
@@ -253,7 +254,7 @@
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(151,187,205,1)",
-                data: [19.67,19.00,21.50,21.67]
+                data: [19.67, 19.00, 21.50, 21.67]
             },
             {
                 label: "Desktop Mac OSX Yandex Browser",
@@ -263,7 +264,7 @@
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(151,187,205,1)",
-                data: [426.05,269.53,310.11,343.63]
+                data: [426.05, 269.53, 310.11, 343.63]
             }
 //          {
 //            label: "Float Desktop Mac OSX Yandex Browser",
@@ -402,7 +403,8 @@
         ]
     };
     var myNewChart = new Chart(ctx).Bar(data, options);
-</script><script>
+</script>
+<script>
     var ctx = document.getElementById("myChart4").getContext("2d");
     Chart.global = {
         scaleSteps: 4,
@@ -427,7 +429,7 @@
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [ 617.92, 776.38, 693.00, 673.08]
+                data: [617.92, 776.38, 693.00, 673.08]
             },
             {
                 label: "Desktop Mac OSX FF",
@@ -480,6 +482,124 @@
         ]
     };
     var myNewChart = new Chart(ctx).Bar(data, options);
+</script>
+<h1>Зависимость скорости отрисовки от количества css-правил</h1>
+<canvas id="myChart6" width="1100" height="500"></canvas>
+<script>
+    var ctx = document.getElementById("myChart6").getContext("2d");
+    Chart.global = {
+        scaleSteps: 4,
+        responsive: false
+    };
+    var options = {
+        legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\">asdddsaas<% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+    }
+    var data = {
+        labels: [
+            "0 ya.ru",//0
+            "84 YouTube",//2.14
+            "106 AOL",//5.14
+            "160 eBay",//3.32
+            "1096 E1.ru",//3.06
+            "1750 Wikipedia",//0.61
+            "1849 Google",//0.8
+            "1914 Mail.ru",//0.56
+            "2882 Facebook",//1.28
+            "3867 Yandex",//1.24
+            "4105 habrahabr",//2.14
+            "6409 Urfu",//1.81
+            "7310 vk.com"//1.87
+        ],
+        datasets: [
+            {
+                label: "Desktop Mac OSX Chromium Paint",
+                fillColor: "rgba(20,220,220,.2)",
+                strokeColor: "rgba(20,220,220,1)",
+                pointColor: "rgba(20,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: [
+                    0,
+                    2.14,
+                    5.14,
+                    3.32,
+                    3.06,
+                    0.61,
+                    0.8,
+                    0.56,
+                    1.28,
+                    1.24,
+                    2.14,
+                    1.81,
+                    1.87
+                ]
+            },
+            {
+                label: "Desktop Mac OSX Chromium Load",
+                fillColor: "rgba(255,236,194,.2)",
+                strokeColor: "rgba(243,98,35,1)",
+                pointColor: "rgba(243,98,35,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: [
+                    1.31,
+                    3.35,
+                    6.77,
+                    5.24,
+                    4.14,
+                    2.70,
+                    2.42,
+                    1.6,
+                    2.46,
+                    2.08,
+                    3.19,
+                    3.97,
+                    3.50
+                ]
+            },
+//            {
+//                label: "Desktop Mac OSX Yandex Browser",
+//                fillColor: "rgba(153,48,0,1)",
+//                strokeColor: "rgba(153,48,0,1)",
+//                pointColor: "rgba(153,48,0,1)",
+//                pointStrokeColor: "#fff",
+//                pointHighlightFill: "#fff",
+//                pointHighlightStroke: "rgba(151,187,205,1)",
+//                data: [426.05, 269.53, 310.11, 343.63]
+//            }
+//          {
+//            label: "Float Desktop Mac OSX Yandex Browser",
+//                fillColor: "rgba(220,20,20,0.2)",
+//                strokeColor: "rgba(220,20,20,0.1)",
+//                pointColor: "rgba(220,20,20,0.1)",
+//            data: ["3.80","0.40","1.00","1.20","2.20","2.80","3.60","4.40","5.60","5.00","6.20","7.40","13.60","14.20","16.80","22.00","25.00"]
+//          },
+            //         {
+            //             label: "nexus 4",
+            //             fillColor: "rgba(51,187,205,0.2)",
+            //             strokeColor: "rgba(51,187,205,1)",
+            //             pointColor: "rgba(51,187,205,1)",
+            //             pointStrokeColor: "#fff",
+            //             pointHighlightFill: "#fff",
+            //             pointHighlightStroke: "rgba(151,187,205,1)",
+            //             data: ["3.80","6.80","13.00","15.80","27.80","33.00","43.80","49.80","58.40","70.60","75.40","85.40","146.20","175.00","219.40","257.80","295.00"]
+            //         },
+//          {
+//          label: "IPad mini 2",
+//                fillColor: "rgba(11,187,205,0.2)",
+//                strokeColor: "rgba(11,187,205,1)",
+//                pointColor: "rgba(11,187,205,1)",
+//                pointStrokeColor: "#fff",
+//                pointHighlightFill: "#fff",
+//                pointHighlightStroke: "rgba(151,187,205,1)",
+//          data: ["2.60","4.20","4.20","4.40","8.80","11.20","13.00","15.60","19.40","19.60","25.60","27.80","47.80","59.20","64.60","95.20","97.60"]
+//          },
+
+        ]
+    };
+    var myNewChart = new Chart(ctx).Line(data, options);
 </script>
 </body>
 </html>

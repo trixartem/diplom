@@ -1,0 +1,12 @@
+html
+    head
+        title= 'Float'
+        link(rel='stylesheet', href='float.css')
+    body
+        div(class='container')
+            - for (var i = 0; i < 300; i++)
+                each val, index in [10, 6, 4, 2, 2, 2, 2, 2]
+                    div(class='ex ex-' + index)
+                        - var n = 0
+                        while n < val
+                            div(class= 'col-' + n++ + ' col')= index + 1

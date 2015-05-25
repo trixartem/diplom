@@ -1,0 +1,82 @@
+/*
+Chromium 43 macosx
+    layout   58
+    recalculate  37 ms
+    paint  7.541 ms
+    composite
+Safari macosx
+    layout   46 ms
+    recalculate  25 ms
+    paint  520 ms
+    composite
+*/
+.container {
+    max-width: 940px;
+    margin: 2rem auto;
+    font-family: Arial;
+}
+.ex {
+    width: 100%;
+    overflow: hidden;
+    table-layout: fixed;
+    margin-bottom: 1rem;
+}
+.col:nth-of-type(2n) {
+    background: rgba(255,0,0,.3);
+}
+.col:nth-of-type(2n + 1) {
+    background: rgba(255,0,0,.15);
+}
+.col {
+    float: left;
+    line-height: 3rem;
+    text-align: center;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.ex-0 .col {
+    width: 10%;
+}
+.ex-1 .col {
+    width: (100%/6);
+}
+.ex-2 .col {
+    width: (100%/4);
+}
+.ex-3 .col {
+    width: (100%/2);
+}
+.ex-4 .col-0 {
+    width: 67%;
+}
+.ex-4 .col-1 {
+    width: 33%;
+}
+
+.ex-5 .col-0 {
+    width: 80%;
+}
+.ex-5 .col-1 {
+    width: 20%;
+}
+
+.ex-6 .col-0 {
+    width: 90%;
+}
+.ex-6 .col-1 {
+    width: 10%;
+}
+
+.ex-7 .col-0 {
+    width: 20%;
+}
+.ex-7 .col-1 {
+    width: 80%;
+}
+
+.ex-8 .col {
+}
+
+.ex-9 .col {
+}

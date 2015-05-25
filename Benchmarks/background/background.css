@@ -1,0 +1,81 @@
+/*
+Chromium 43 macosx
+    paint  15.742 ms
+Safari macosx
+    paint  6.5 ms
+*/
+.container {
+  max-width: 100%;
+  margin: 2rem auto;
+  font-family: Arial;
+}
+.row {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.item {
+  display: inline-block;
+  height: 4rem;
+  text-align: center;
+  padding: 0 10px;
+  box-sizing: border-box;
+  width: 5.263157894736842%;
+}
+.item-0 {
+  background: #e1324d;
+}
+.item-1 {
+  background: #de5f2c;
+}
+.item-2 {
+  background: #d1a939;
+}
+.item-3 {
+  background: #aecc38;
+}
+.item-4 {
+  background: #79cd26;
+}
+.item-5 {
+  background: #3adc20;
+}
+.item-6 {
+  background: #2cc944;
+}
+.item-7 {
+  background: #31c57c;
+}
+.item-8 {
+  background: #35cbb5;
+}
+.item-9 {
+  background: #41ccd8;
+}
+.item-10 {
+  background: #3785d8;
+}
+.item-11 {
+  background: #4045cf;
+}
+.item-12 {
+  background: #792fda;
+}
+.item-13 {
+  background: #b93ddb;
+}
+.item-14 {
+  background: #ce33e0;
+}
+.item-15 {
+  background: #db37a5;
+}
+.item-16 {
+  background: #db2e5d;
+}
+.item-17 {
+  background: #da0003;
+}
+.item-18 {
+  background: #e66900;
+}
