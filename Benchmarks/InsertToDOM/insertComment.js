@@ -105,6 +105,7 @@ function autotest(name) {
     result += '<div class=count>Count elements: ' + JSON.stringify(testData.countElements) + '</div>';
     result += '<div class=time>Average time: ' + JSON.stringify(testedData) + '</div>';
 
-    resultContainer.innerHTML = result;
+    //resultContainer.innerHTML = result;
+    resultContainer.innerText = JSON.stringify(testedData);
 
 }

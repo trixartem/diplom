@@ -15,10 +15,17 @@
 
         .mac-firefox {
             background: rgba(243, 98, 35, 1);
+            color: white;
         }
 
         .mac-yandex {
             background: rgba(153, 48, 0, 1);
+            color: white;
+        }
+
+        .ipad2-mini {
+            background: rgba(77, 34, 14, 1);
+            color: white;
         }
     </style>
 </head>
@@ -29,6 +36,7 @@
     <div class='legend-item mac-cromium'>Desktop Mac OSX Chromium</div>
     <div class='legend-item mac-firefox'>Desktop Mac OSX FF</div>
     <div class='legend-item mac-yandex'>Desktop Mac OSX Yandex Browser</div>
+    <div class='legend-item ipad2-mini'>IPad 2 mini Safari</div>
 </div>
 <script>
     var ctx = document.getElementById("myChart").getContext("2d");
@@ -75,28 +83,28 @@
 //                pointColor: "rgba(220,20,20,0.1)",
 //            data: ["3.80","0.40","1.00","1.20","2.20","2.80","3.60","4.40","5.60","5.00","6.20","7.40","13.60","14.20","16.80","22.00","25.00"]
 //          },
-             {
-                 label: "nexus 4",
-                 fillColor: "rgba(51,187,205,0.2)",
-                 strokeColor: "rgba(51,187,205,1)",
-                 pointColor: "rgba(51,187,205,1)",
-                 pointStrokeColor: "#fff",
-                 pointHighlightFill: "#fff",
-                 pointHighlightStroke: "rgba(151,187,205,1)",
-                     //[100,      200,     400,     500,     1000,     1200,      1500,    1800,     2000,      2200,     2700,     3000,       5000]
-                 data: ["286.20","540.60","1000.80","1344.60","2467.80","3356.60","3901.80","4949.00","5338.20","6421.40","7000.20","8848","12995.5"]
-             },
-//          {
-//          label: "IPad mini 2",
-//                fillColor: "rgba(11,187,205,0.2)",
-//                strokeColor: "rgba(11,187,205,1)",
-//                pointColor: "rgba(11,187,205,1)",
-//                pointStrokeColor: "#fff",
-//                pointHighlightFill: "#fff",
-//                pointHighlightStroke: "rgba(151,187,205,1)",
-//          data: ["2.60","4.20","4.20","4.40","8.80","11.20","13.00","15.60","19.40","19.60","25.60","27.80","47.80","59.20","64.60","95.20","97.60"]
-//          },
-
+            {
+                label: "nexus 4",
+                fillColor: "rgba(51,187,205,0.2)",
+                strokeColor: "rgba(51,187,205,1)",
+                pointColor: "rgba(51,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                //[100,      200,     400,     500,     1000,     1200,      1500,    1800,     2000,      2200,     2700,     3000,       5000]
+                data: ["286.20", "540.60", "1000.80", "1344.60", "2467.80", "3356.60", "3901.80", "4949.00", "5338.20", "6421.40", "7000.20", "8848", "12995.5"]
+            },
+            {
+                label: "IPad mini 2",
+                fillColor: "rgba(77,34,14,0.2)",
+                strokeColor: "rgba(77,34,14,1)",
+                pointColor: "rgba(77,34,14,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                //    [100,      200,     400,     500,     1000,     1200,      1500,    1800,     2000,      2200,     2700,       3000,      5000     ]
+                data: ["37.20", "70.00", "147.60", "177.80", "354.20", "431.60", "554.80", "653.80", "781.20", "1042.80", "1010.80", "1123.40", "1801.80"]
+            }
         ]
     };
     var myNewChart = new Chart(ctx).Line(data);
