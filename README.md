@@ -1,4 +1,6 @@
 # diplom
+[Background](https://cdn.rawgit.com/trixartem/diplom/master/Benchmarks/background/background.html)
+
 [Тесты на вставку в DOM](https://cdn.rawgit.com/trixartem/diplom/master/Benchmarks/InsertToDOM/insertCommet.html)
 
 ![empire-state-building](https://raw.github.com/trixartem/diplom/master/insert.png)
