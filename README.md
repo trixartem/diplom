@@ -1,5 +1,7 @@
 # diplom
 
+[Презентация](https://cdn.rawgit.com/trixartem/diplom/master/presentation/shower/index.html)
+
 [Заметки](https://www.evernote.com/shard/s257/sh/86203d21-90f2-4144-8fdc-d3f970a76bdc/69f293c71653114a6178006152831d54)
 
 ### Background
