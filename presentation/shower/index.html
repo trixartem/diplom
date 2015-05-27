@@ -1,0 +1,428 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Shower Presentation Engine</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=792, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+    <style>
+        html {
+            font-family: Times New Roman;
+        }
+
+        .legend {
+            position: absolute;
+            right: 10px;
+        }
+
+        .legend-item {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .legend-item:before {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            content: '';
+            margin-right: 7px;
+            vertical-align: middle;
+        }
+
+        .mac-cromium:before {
+            background: rgb(20, 220, 20);
+        }
+
+        .mac-firefox:before {
+            background: rgba(243, 98, 35, 1);
+            color: white;
+        }
+
+        .ipad2-mini:before {
+            background: rgba(77, 34, 14, 1);
+            color: white;
+        }
+
+        .ipad-mini:before {
+            background: rgba(255, 153, 173, 1);
+            color: white;
+        }
+
+        .win-7:before {
+            background: rgba(0, 51, 153, 1);
+        }
+
+        .nexus-4:before {
+            background: rgb(51, 187, 205);
+        }
+
+        .nokia-lumia:before {
+            background: rgb(255, 10, 10);
+        }
+
+        .samsung-gt:before {
+            background: rgba(120, 83, 148, 1);
+        }
+
+        .samsung-nexus:before {
+            background: rgb(51, 100, 100);
+        }
+    </style>
+</head>
+<body class="list">
+<header class="caption">
+    <h1>Магистерска диссертация</h1>
+
+    <p>Кувалдина Артема Витальевича</p>
+</header>
+<section class="slide shrink shout">
+    <div>
+        <h2 style="font-size: 50px;">Исследование и динамическая оптимизация работы браузера для различных
+            платформ.</h2>
+
+        <p style="position: absolute; bottom: 0; left: 50px;">Кувалдин Артем Витальевич</p>
+    </div>
+</section>
+<section class="slide">
+    <div>
+        <script>document.addEventListener('keydown', console.log.bind(console))</script>
+        <h2>План</h2>
+        <ol>
+            <li>Введение</li>
+            <li>Объекты исследования</li>
+            <li>Результаты исследования</li>
+            <li>Особенности современных браузеров</li>
+            <li>Заключение</li>
+        </ol>
+        <!--<p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>-->
+    </div>
+</section>
+<section class="slide">
+    <div>
+        <h2>Популярные платформы</h2>
+         <img height="400" src="pictures/StatCounter-browser-ww-monthly-201201-201504.png">
+    </div>
+</section>
+<section class="slide">
+    <div>
+        <h2>Устройство браузера(WebKit)</h2>
+        <img src="pictures/webkitflow.png">
+    </div>
+</section>
+<section class="slide">
+    <div>
+        <h2>Устройство браузера(WebKit)</h2>
+        <iframe width="520" height="415" src="https://www.youtube.com/embed/ZTnIxIA5KGw" frameborder="0" allowfullscreen></iframe>
+    </div>
+</section>
+<section class="slide">
+    <div>
+        <h2>Что такое GPU</h2>
+
+        <p>- отдельное устройство персонального компьютера или игровой приставки, выполняющее графический рендеринг.</p>
+    </div>
+</section>
+<section class="slide">
+    <div>
+        <h2>Какие устройства тестировались?</h2>
+        <ul style="font-size: 20px">
+            <li>Mac Os ОЗУ 8GB core i7 15'' 1440x1990
+            <li>LG Nexus 4 ( Android 5.1) экран 4.7", разрешение 768x1280 4 ядра 1500 МГц ОЗУ 2GB GPU</li>
+            <li>Ipad mini (IOS 8) 7.9", 1024x768 2 ядра A5 1000 МГц ОЗУ 512MB</li>
+            <li>Ipad mini 2 (IOS 8) 7.9", 2048x1536 2 ядра A7</li>
+            <li>Windows 7 ОЗУ 2GB Pentium Dual-Core T4500 CPU 2.3GHz 17'' 1280x1024</li>
+            <li>NOKIA Lumia 820 (window phone 8.1) 4.3'' 480x800 2 ядра 1500 МГц ОЗУ 1GB</li>
+            <li>Samsung Galaxy Nexus GT-I9250 (Android 4.3) 4.65'' 720x1280 2 ядра 1200 МГц ОЗУ 1GB</li>
+            <li>Samsung GT-P7300 Android 3.3 2 ядра 1000 МГц 8.9", 1280x800</li>
+        </ul>
+        <!--<figure>-->
+        <!--<blockquote>-->
+        <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore-->
+        <!--et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut-->
+        <!--aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse-->
+        <!--cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in-->
+        <!--culpa qui officia.</p>-->
+        <!--</blockquote>-->
+        <!--<figcaption>Marcus Tullius Cicero</figcaption>-->
+        <!--</figure>-->
+    </div>
+</section>
+<section class="slide">
+    <div>
+        <h2>Виды тестов</h2>
+        <ul>
+            <li>Загрузка элементы с разным внешним видом</li>
+            <li>Скорость работы css-селекторов</li>
+            <li>Вставка элементов в DOM-дерево</li>
+            <li>Различные виды верстки</li>
+        </ul>
+        <!--<pre>-->
+        <!--<code>&lt;!DOCTYPE html&gt;</code>-->
+        <!--<code>&lt;html lang="en"&gt;</code>-->
+        <!--<code>-->
+        <!--<mark>&lt;head&gt;</mark>-->
+        <!--<mark class="comment">&lt;!&#45;&#45;Comment&#45;&#45;&gt;</mark>-->
+        <!--</code>-->
+        <!--<code>    &lt;title&gt;Shower&lt;/title&gt;</code>-->
+        <!--<code>    &lt;meta charset="-->
+        <!--<mark class="important">UTF-8</mark>-->
+        <!--"&gt;</code>-->
+        <!--<code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>-->
+        <!--<code>-->
+        <!--<mark>&lt;/head&gt;</mark>-->
+        <!--</code>-->
+        <!--</pre>-->
+    </div>
+</section>
+<section class="slide">
+    <div>
+        <h2>Инструмент для измерений(WebKit)</h2>
+        <img src="pictures/devTools.png" height="400">
+    </div>
+</section>
+<section class="slide">
+    <div>
+        <h2>Отрисовка элементов с разным фоном</h2>
+        <table style="font-size: 20px">
+            <tr>
+                <th></th>
+                <th>Chrome<br>
+                    (Win 7)
+                </th>
+                <th scope="col"> Safari<br>
+                    (Mac)
+                </th>
+                <th>Chromium<br>
+                    (Mac)
+                </th>
+                <th>Chrome<br>
+                    (Nexus 4)
+                </th>
+                <th>Chrome<br>
+                    (Galaxy)
+                </th>
+            </tr>
+            <tr>
+                <th scope="row">Background(HEX)</th>
+                <td>3.94</td>
+                <td>16.5</td>
+                <td>15.742</td>
+                <td>181.841</td>
+                <td>175</td>
+            </tr>
+            <tr>
+                <th scope="row">Background-color(HEX)</th>
+                <td>4</td>
+                <td>15.2</td>
+                <td>14.234</td>
+                <td>167.645</td>
+                <td>164</td>
+            </tr>
+            <tr>
+                <th scope="row">Background-color
+                    (RGBA)
+                </th>
+                <td>4</td>
+                <td>14.7</td>
+                <td>20.342</td>
+                <td>160.354</td>
+                <td>159.9</td>
+            </tr>
+            <tr>
+                <th scope="row">Background-color Opacity</th>
+                <td>34</td>
+                <td>65</td>
+                <td>30.88</td>
+                <td>451.335</td>
+                <td>371.9</td>
+            </tr>
+        </table>
+        <!--<p>It’s good to have information organized.</p>-->
+    </div>
+</section>
+<section class="slide">
+    <div>
+        <h2>Вставка элементов в DOM</h2>
+        <div class="legend">
+            <div class='legend-item ipad2-mini'>IPad 2 mini Safari</div>
+            <div class='legend-item win-7'>Windows 7</div>
+            <div class='legend-item mac-firefox'>Desktop Mac OSX FF</div>
+            <div class='legend-item mac-cromium'>Desktop Mac OSX Chromium</div>
+        </div>
+        <canvas id="myChart" width="700" height="400"></canvas>
+        <script>
+            var ctx = document.getElementById("myChart").getContext("2d");
+            Chart.global = {
+                scaleSteps: 1
+            };
+            var data = {
+                labels: [100, 200, 400, 500, 1000, 1200, 1500, 1800, 2000, 2200, 2700, 3000, 5000],
+                datasets: [
+                    {
+                        label: "Desktop Mac OSX Chromium",
+                        fillColor: "rgba(20,220,20,0.6)",
+                        strokeColor: "rgba(20,220,20,1)",
+                        pointColor: "rgba(20,220,20,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: ["17.40", "56.60", "103.40", "68.20", "143.60", "296.80", "209.80", "306.80", "344.20", "400.40", "570.00", "551.40", "1063.80"]
+                    },
+                    {
+                        label: "Desktop Mac OSX FF",
+                        fillColor: "rgba(255,236,194,0.2)",
+                        strokeColor: "rgba(243,98,35,1)",
+                        pointColor: "rgba(243,98,35,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(151,187,205,1)",
+                        data: ["27.20", "47.00", "102.40", "120.00", "314.00", "323.00", "347.40", "431.00", "507.40", "483.40", "556.40", "555.20", "936.20"]
+                    },
+                    {
+                        label: "Windows 7 Chrome",
+                        fillColor: "rgba(0, 51, 153, 0.2)",
+                        strokeColor: "rgba(0, 51, 153, 1)",
+                        pointColor: "rgba(0, 51, 153, 1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(0, 51, 153, 1)",
+                        data: ["29.00", "54.20", "107.60", "134.20", "280.20", "331.60", "407.40", "497.80", "542.20", "606.60", "977.40", "886.00", "1428.20"]
+                    },
+                    {
+                        label: "IPad mini 2",
+                        fillColor: "rgba(77,34,14,0.2)",
+                        strokeColor: "rgba(77,34,14,1)",
+                        pointColor: "rgba(77,34,14,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(151,187,205,1)",
+                        //    [100,      200,     400,     500,     1000,     1200,      1500,    1800,     2000,      2200,     2700,       3000,      5000     ]
+                        data: ["37.20", "70.00", "147.60", "177.80", "354.20", "431.60", "554.80", "653.80", "781.20", "1042.80", "1010.80", "1123.40", "1801.80"]
+                    }
+                ]
+            };
+            var myNewChart = new Chart(ctx).Line(data);
+        </script>
+    </div>
+</section>
+<section class="slide">
+    <div>
+        <h2>Вставка элементов в DOM</h2>
+
+        <div class="legend">
+            <div class='legend-item nokia-lumia'>Nokia Lumia</div>
+            <div class='legend-item samsung-gt'>Samsung GT-P7300</div>
+            <div class='legend-item samsung-nexus'>Samsung Nexus</div>
+            <div class='legend-item nexus-4'>LG NEXUS 4</div>
+            <div class='legend-item ipad-mini'>IPad mini Safari</div>
+        </div>
+        <canvas id="forSlow" width="700" height="400"></canvas>
+        <script>
+            var ctx = document.getElementById("forSlow").getContext("2d");
+            Chart.global = {
+                scaleSteps: 1
+            };
+            var data = {
+                labels: [100, 200, 400, 500, 1000, 1200, 1500, 1800, 2000, 2200, 2700, 3000, 5000],
+                datasets: [
+                    {
+                        label: "Samsung GT-P7300 Android 3.3",
+                        fillColor: "rgba(120,83, 148,0.1)",
+                        strokeColor: "rgba(120,83, 148,1)",
+                        pointColor: "rgba(120,83, 148,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(120,83, 148,1)",
+                        //    [100       200,       400,      500,        1000,     1200,      1500,      1800,       2000,     2200,      2700,      3000,   5000]
+                        data: ["426.20", "1118.60", "2359.80", "3439.60", "7089.80", "15000.60", "15000.80", "15000.00", "15000.20", "15000.40", "15000.20", "15000", "15000.5"]
+                    },
+                    {
+                        label: "Nokia lumia",
+                        fillColor: "rgba(255,10,10,0.05)",
+                        strokeColor: "rgba(255,10,10,1)",
+                        pointColor: "rgba(255,10,10,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(255,10,10,1)",
+                        //    [100      200,     400,      500,        1000,     1200,      1500,      1800,       2000,     2200,      2700,      3000,   5000]
+                        data: ["416", "576.60", "1048.80", "1756.60", "3070.80", "4358.60", "5220.80", "6308.00", "7066.20", "7841.40", "9293.20", "10788", "15000.5"]
+                    },
+                    {
+                        label: "nexus 4",
+                        fillColor: "rgba(51,187,205,0.1)",
+                        strokeColor: "rgba(51,187,205,1)",
+                        pointColor: "rgba(51,187,205,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(151,187,205,1)",
+                        //[100,      200,     400,     500,     1000,     1200,      1500,    1800,     2000,      2200,     2700,     3000,       5000]
+                        data: ["286.20", "540.60", "1000.80", "1344.60", "2467.80", "3356.60", "3901.80", "4949.00", "5338.20", "6421.40", "7000.20", "8848", "12995.5"]
+                    },
+                    {
+                        label: "Samsung nexus",
+                        fillColor: "rgba(51,100, 100,0.1)",
+                        strokeColor: "rgba(51,100, 100,1)",
+                        pointColor: "rgba(51,100, 100,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(51,100, 100,1)",
+                        //    [100       200,       400,      500,        1000,     1200,      1500,      1800,       2000,     2200,      2700,      3000,   5000]
+                        data: ["274.20", "562.60", "1058.80", "1561.60", "2596.80", "3488.60", "4356.80", "5223.00", "5943.20", "6643.40", "8149.20", "8930", "14269.5"]
+                    },
+                    {
+                        label: "IPad mini",
+                        fillColor: "rgba(255,153,173,0.2)",
+                        strokeColor: "rgba(255,153,173,1)",
+                        pointColor: "rgba(255,153,173,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(151,187,205,1)",
+                        //    [100,   200,   400,   500,   1000,   1200,    1500,   1800,  2000,   2200,   2700,    3000,   5000]
+                        data: ["147", "295", "582", "824", "1470", "1990", "2457", "3231", "3351", "3734", "4461", "5076", "7744"]
+                    }
+                ]
+            };
+            var myNewChart = new Chart(ctx).Line(data);
+        </script>
+    </div>
+</section>
+<section class="slide">
+    <div>
+        <h2>Композиция слоев</h2>
+        <iframe src="http://udacity.github.io/60fps/lesson6/willChange/index.html" width="700" height="400"></iframe>
+    </div>
+</section>
+<!--<section class="slide shout" id="SeeMore">-->
+    <!--<div>-->
+        <!--<h2><img src="pictures/logo.svg" alt=""> <a href="https://github.com/shower/shower">See more on GitHub</a></h2>-->
+        <!--<style>-->
+            <!--#Picture h2 {-->
+                <!--color: #FFF;-->
+            <!--}-->
+
+            <!--#SeeMore h2 {-->
+                <!--font-size: 100px-->
+            <!--}-->
+
+            <!--#SeeMore img {-->
+                <!--width: 0.72em;-->
+                <!--height: 0.72em;-->
+            <!--}-->
+        <!--</style>-->
+    <!--</div>-->
+<!--</section>-->
+<p class="badge"><a href="https://github.com/shower/shower">Fork me on Github</a></p>
+<!--
+    To hide progress bar from entire presentation
+    just remove “progress” element.
+    -->
+<div class="progress">
+    <div></div>
+</div>
+<script src="shower/shower.min.js"></script>
+<!-- Copyright © 2014 Yours Truly, Famous Inc. -->
+<!-- Photos by John Carey, fiftyfootshadows.net -->
+</body>
+</html>
