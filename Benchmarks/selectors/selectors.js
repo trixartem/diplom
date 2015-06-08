@@ -10,7 +10,6 @@ function createBoxes() {
         if (i === count / 2) {
             box.classList.add('box__middle');
         }
-        //box.innerHTML = '<div class="box__inner"><div class=title id="box' + i + '">box ' + i + '</div></div>';
         box.innerHTML = '<div id=' + i + ' class="box__header"><span class="box__span">Span</span><a class="box__link" href="#link-f">link</a><button>button</button></div>';
         box.innerHTML += '<h2 class="box__h2"></h2>';
         if ((Math.random() * 10) > 4) {
@@ -79,9 +78,7 @@ selectors.forEach(function (s) {
     var time;
     var g = Date.now();
 
-    //console.time(s);
     document.querySelectorAll(s);
-    //console.timeEnd(s);
 
     time = Date.now() - g;
     SelectorObject[s].push(time);
@@ -110,9 +107,7 @@ var el = document.createElement('pre');
 el.innerText = average.join() + JSON.stringify(SelectorObject);
 
 console.log(average.join());
-
 document.getElementById('json').appendChild(el);
-
 console.log(SelectorObject);
 
 function change() {
