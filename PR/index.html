@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Исследование и динамическая оптимизация работы браузера для различных платформ.</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/league.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        html {
+            font-family: Times New Roman;
+        }
+
+        .legend-item {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .legend-item:before {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            content: '';
+            margin-right: 7px;
+            vertical-align: middle;
+        }
+
+        .mac-cromium:before {
+            background: rgb(20, 220, 20);
+        }
+
+        .mac-firefox:before {
+            background: rgba(243, 98, 35, 1);
+            color: white;
+        }
+
+        .ipad2-mini:before {
+            background: rgba(77, 34, 14, 1);
+            color: white;
+        }
+
+        .ipad-mini:before {
+            background: rgba(255, 153, 173, 1);
+            color: white;
+        }
+
+        .win-7:before {
+            background: rgba(0, 51, 153, 1);
+        }
+
+        .nexus-4:before {
+            background: rgb(51, 187, 205);
+        }
+
+        .nokia-lumia:before {
+            background: rgb(255, 10, 10);
+        }
+
+        .samsung-gt:before {
+            background: rgba(120, 83, 148, 1);
+        }
+
+        .samsung-nexus:before {
+            background: rgb(51, 100, 100);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section>
+            <h3>Исследование и динамическая оптимизация работы браузера для различных платформ.</h3>
+
+            <div style="text-align:left;">
+                <small>Студент: Кувалдин А.В.</small>
+                <br>
+                <small>Научный руководитель: Березин Д.А.</small>
+            </div>
+        </section>
+
+        <section>
+            <h2>Цели/задачи</h2>
+            <ul>
+                <li class="fragment">Изучить особенности браузеров</li>
+                <li class="fragment">Исследовать скорость отображения элементов</li>
+                <li class="fragment">Исследовать скорость вставки элементов</li>
+                <li class="fragment">Изучить особенности анимаций</li>
+                <li class="fragment">Сделать выводы в виде рекомендаций</li>
+            </ul>
+        </section>
+        <!--TODO Вставить статистику по опереционным системам-->
+        <section data-background-image="images/statcounter.png" style="background: rgba(0,0,0,.4); width: 800px">
+            <h2>Устройства</h2>
+            <ul>
+                <li>MacBook Air(Mac OSX)</li>
+                <li>Lenovo (Windows 7)</li>
+                <li>Ipad mini (IOS 8)</li>
+                <li>Ipad mini 2 (IOS 8)</li>
+                <li>LG Nexus 4 (android 5.3)</li>
+                <li>Nokia Lumia 820 (windows phone 8.1)</li>
+                <li>Samsung GT-P7300/GT-I9250 (android 4/3.2)</li>
+            </ul>
+        </section>
+
+        <section data-transition="fade-out convex-in">
+            <h2>Принцип работы браузеров</h2>
+            <ol>
+                <li class="fragment">Парсинг HTML</li>
+                <li class="fragment">Построение DOM</li>
+                <li class="fragment">Построение CSSOM</li>
+                <li class="fragment">Объединение</li>
+                <li class="fragment">Отрисовка</li>
+            </ol>
+        </section>
+        <section data-transition="fade-in convex-out">
+            <div>
+                <iframe width="800" height="500" data-src="https://www.youtube.com/embed/ZTnIxIA5KGw" frameborder="0"
+                        allowfullscreen></iframe>
+            </div>
+        </section>
+        <section style="text-align: left;">
+            <h2>Вставка элементов в DOM</h2>
+            <canvas id="myChart" width="900" height="600"></canvas>
+            <div class="legend" style="position: absolute;top: 132px; right:-140px; text-align: left; width: 250px">
+                <div class='legend-item ipad2-mini'>IPad 2 mini Safari</div>
+                <div class='legend-item win-7'>Windows 7</div>
+                <div class='legend-item mac-firefox'>Desktop Mac OSX FF</div>
+                <div class='legend-item mac-cromium'>Desktop Mac OSX W</div>
+            </div>
+        </section>
+        <section style="text-align: left;">
+            <h2>Вставка элементов в DOM</h2>
+            <canvas id="myChart2" width="900" height="600"></canvas>
+            <div class="legend" style="position: absolute;top: 132px; right:-140px; text-align: left; width: 250px">
+                <div class='legend-item nokia-lumia'>Nokia Lumia</div>
+                <div class='legend-item samsung-gt'>Samsung GT-P7300</div>
+                <div class='legend-item samsung-nexus'>Samsung Nexus</div>
+                <div class='legend-item nexus-4'>LG NEXUS 4</div>
+                <div class='legend-item ipad-mini'>IPad mini Safari</div>
+            </div>
+        </section>
+        <section style="text-align: left;">
+            <h2>Тестирование css-селекторов</h2>
+            <canvas id="myChart3" width="900" height="600"></canvas>
+            <div class="legend" style="position: absolute;top: 132px; right:-190px; text-align: left; width: 300px">
+                <div class='legend-item samsung-nexus'>Samsung Nexus</div>
+                <div class='legend-item nexus-4'>LG NEXUS 4</div>
+                <div class='legend-item ipad2-mini'>IPad 2 mini Safari</div>
+                <div class='legend-item win-7'>Windows 7</div>
+                <div class='legend-item mac-firefox'>Desktop Mac OSX FF</div>
+                <div class='legend-item mac-cromium'>Desktop Mac OSX W</div>
+            </div>
+        </section>
+        <section style="text-align: left;">
+            <h2>Тестирование css-селекторов</h2>
+            <canvas id="myChart4" width="900" height="600"></canvas>
+            <div class="legend" style="position: absolute;top: 132px; right:-190px; text-align: left; width: 300px">
+                <div class='legend-item samsung-nexus'>Samsung Nexus</div>
+                <div class='legend-item nexus-4'>LG NEXUS 4</div>
+                <div class='legend-item ipad2-mini'>IPad 2 mini Safari</div>
+                <div class='legend-item win-7'>Windows 7</div>
+                <div class='legend-item mac-firefox'>Desktop Mac OSX FF</div>
+                <div class='legend-item mac-cromium'>Desktop Mac OSX W</div>
+            </div>
+        </section>
+        <section style="text-align: left;">
+            <h2>Тестирование css-селекторов</h2>
+            <canvas id="myChart5" width="900" height="600"></canvas>
+            <div class="legend" style="position: absolute;top: 132px; right:-190px; text-align: left; width: 300px">
+                <div class='legend-item samsung-nexus'>Samsung Nexus</div>
+                <div class='legend-item nexus-4'>LG NEXUS 4</div>
+                <div class='legend-item ipad2-mini'>IPad 2 mini Safari</div>
+                <div class='legend-item win-7'>Windows 7</div>
+                <div class='legend-item mac-firefox'>Desktop Mac OSX FF</div>
+                <div class='legend-item mac-cromium'>Desktop Mac OSX W</div>
+            </div>
+        </section>
+        <section>
+            <h2>Отображение фона</h2>
+            <table>
+                <thead>
+                <tr>
+                    <td></td>
+                    <td>Chrome (Win 7)</td>
+                    <td>Safari (Mac)</td>
+                    <td>Chromium (Mac)</td>
+                    <td>Chrome (Nexus 4)</td>
+                    <td>Chrome (Galaxy)</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Background</td>
+                    <td>3.94</td>
+                    <td>16.5</td>
+                    <td>15.742</td>
+                    <td>181.841</td>
+                    <td>175</td>
+                </tr>
+                <tr>
+                    <td>Background-color</td>
+                    <td>4</td>
+                    <td>15.2</td>
+                    <td>14.234</td>
+                    <td>167.645 </td>
+                    <td>164</td>
+                </tr>
+                <tr>
+                    <td>Background-color(A)
+                    </td>
+                    <td>4</td>
+                    <td>14.7</td>
+                    <td>20.342</td>
+                    <td>160.354</td>
+                    <td>159.9</td>
+                </tr>
+                <tr>
+                    <td>Background-color(O)</td>
+                    <td>34</td>
+                    <td>65</td>
+                    <td>30.88</td>
+                    <td>451.335</td>
+                    <td>371.9</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <h2>Скорость загрузки страниц</h2>
+            <canvas id="myChart0" width="900" height="600"></canvas>
+        </section>
+
+        <!-- Example of nested vertical slides -->
+        <section>
+            <h2>Композитные слои</h2>
+            <a href="http://udacity.github.io/60fps/lesson6/willChange/index.html" target="_blank">DEMO</a><br>
+            <a href="https://dl.dropboxusercontent.com/u/2272348/codez/parallax/demo-promo/index.html" target="_blank">Parallax
+                transition2d</a><br>
+            <a href="http://www.html5rocks.com/static/demos/parallax/demo-2/demo.html" target="_blank">Parallax
+                transition3d</a>
+        </section>
+
+        <section>
+            <h2>JavaScript - анимации</h2>
+            <a href="http://www.html5rocks.com/en/tutorials/speed/rendering/too-much-layout.html" target="_blank">SetInterval</a><br>
+            <a href="http://www.html5rocks.com/en/tutorials/speed/rendering/too-much-layout-fixed.html" target="_blank">RequestAnimationFrame</a>
+        </section>
+        <section>
+            <h2>Выводы</h2>
+            <ul>
+                <li class="fragment">Ограничить вставку элементов на мобильных устройствах</li>
+                <li class="fragment">Использовать GPU</li>
+                <li class="fragment">Селекторы - классы</li>
+                <li class="fragment">Проверять новые технологии</li>
+                <li class="fragment">Сжимать загружаемый контент</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Спасибо за внимание</h2>
+
+            <p style="text-align: left;">
+                - <a target="_blank" href="http://vk.com/artemkuvaldin">Кувалдин Артем Витальевич</a> <br>
+                - <a href="mailto:trixartem@ya.ru">trixartem@ya.ru</a>
+            </p>
+        </section>
+
+    </div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        width: 1024,
+        height: 768,
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        slideNumber: true,
+
+        transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/highlight/highlight.js', async: true, condition: function () {
+                return !!document.querySelector('pre code');
+            }, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            { src: 'plugin/zoom-js/zoom.js', async: true },
+            { src: 'plugin/notes/notes.js', async: true }
+        ]
+    });
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+<script>
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var data = {
+        labels: [100, 200, 400, 500, 1000, 1200, 1500, 1800, 2000, 2200, 2700, 3000, 5000],
+        datasets: [
+            {
+                label: "Desktop Mac OSX Chromium",
+                fillColor: "rgba(20,220,20,0.6)",
+                strokeColor: "rgba(20,220,20,1)",
+                pointColor: "rgba(20,220,20,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: ["17.40", "56.60", "103.40", "68.20", "143.60", "296.80", "209.80", "306.80", "344.20", "400.40", "570.00", "551.40", "1063.80"]
+            },
+            {
+                label: "Desktop Mac OSX FF",
+                fillColor: "rgba(255,236,194,0.2)",
+                strokeColor: "rgba(243,98,35,1)",
+                pointColor: "rgba(243,98,35,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: ["27.20", "47.00", "102.40", "120.00", "314.00", "323.00", "347.40", "431.00", "507.40", "483.40", "556.40", "555.20", "936.20"]
+            },
+            {
+                label: "Windows 7 Chrome",
+                fillColor: "rgba(0, 51, 153, 0.2)",
+                strokeColor: "rgba(0, 51, 153, 1)",
+                pointColor: "rgba(0, 51, 153, 1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(0, 51, 153, 1)",
+                data: ["29.00", "54.20", "107.60", "134.20", "280.20", "331.60", "407.40", "497.80", "542.20", "606.60", "977.40", "886.00", "1428.20"]
+            },
+            {
+                label: "IPad mini 2",
+                fillColor: "rgba(77,34,14,0.2)",
+                strokeColor: "rgba(77,34,14,1)",
+                pointColor: "rgba(77,34,14,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                //    [100,      200,     400,     500,     1000,     1200,      1500,    1800,     2000,      2200,     2700,       3000,      5000     ]
+                data: ["37.20", "70.00", "147.60", "177.80", "354.20", "431.60", "554.80", "653.80", "781.20", "1042.80", "1010.80", "1123.40", "1801.80"]
+            }
+        ]
+    };
+    var ctx2 = document.getElementById("myChart2").getContext("2d");
+    Chart.global = {
+        scaleSteps: 1
+    };
+    var data2 = {
+        labels: [100, 200, 400, 500, 1000, 1200, 1500, 1800, 2000, 2200, 2700, 3000, 5000],
+        datasets: [
+            {
+                label: "Samsung GT-P7300 Android 3.3",
+                fillColor: "rgba(120,83, 148,0.1)",
+                strokeColor: "rgba(120,83, 148,1)",
+                pointColor: "rgba(120,83, 148,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(120,83, 148,1)",
+                //    [100       200,       400,      500,        1000,     1200,      1500,      1800,       2000,     2200,      2700,      3000,   5000]
+                data: ["426.20", "1118.60", "2359.80", "3439.60", "7089.80", "15000.60", "15000.80", "15000.00", "15000.20", "15000.40", "15000.20", "15000", "15000.5"]
+            },
+            {
+                label: "Nokia lumia",
+                fillColor: "rgba(255,10,10,0.05)",
+                strokeColor: "rgba(255,10,10,1)",
+                pointColor: "rgba(255,10,10,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(255,10,10,1)",
+                //    [100      200,     400,      500,        1000,     1200,      1500,      1800,       2000,     2200,      2700,      3000,   5000]
+                data: ["416", "576.60", "1048.80", "1756.60", "3070.80", "4358.60", "5220.80", "6308.00", "7066.20", "7841.40", "9293.20", "10788", "15000.5"]
+            },
+            {
+                label: "nexus 4",
+                fillColor: "rgba(51,187,205,0.1)",
+                strokeColor: "rgba(51,187,205,1)",
+                pointColor: "rgba(51,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                //[100,      200,     400,     500,     1000,     1200,      1500,    1800,     2000,      2200,     2700,     3000,       5000]
+                data: ["286.20", "540.60", "1000.80", "1344.60", "2467.80", "3356.60", "3901.80", "4949.00", "5338.20", "6421.40", "7000.20", "8848", "12995.5"]
+            },
+            {
+                label: "Samsung nexus",
+                fillColor: "rgba(51,100, 100,0.1)",
+                strokeColor: "rgba(51,100, 100,1)",
+                pointColor: "rgba(51,100, 100,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(51,100, 100,1)",
+                //    [100       200,       400,      500,        1000,     1200,      1500,      1800,       2000,     2200,      2700,      3000,   5000]
+                data: ["274.20", "562.60", "1058.80", "1561.60", "2596.80", "3488.60", "4356.80", "5223.00", "5943.20", "6643.40", "8149.20", "8930", "14269.5"]
+            },
+            {
+                label: "IPad mini",
+                fillColor: "rgba(255,153,173,0.2)",
+                strokeColor: "rgba(255,153,173,1)",
+                pointColor: "rgba(255,153,173,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                //    [100,   200,   400,   500,   1000,   1200,    1500,   1800,  2000,   2200,   2700,    3000,   5000]
+                data: ["147", "295", "582", "824", "1470", "1990", "2457", "3231", "3351", "3734", "4461", "5076", "7744"]
+            }
+        ]
+    };
+    var ctx3 = document.getElementById("myChart3").getContext("2d");
+    Chart.global = {
+        scaleSteps: 1
+    };
+
+    var data3 = {
+        labels: ["#box2001",
+            "* #box1992",
+            ".box__middle div  h2",
+            ".container > .box__footer > .box__footer-span",
+            ".container .box__footer .box__footer-span",
+            ".box.box__last:after",
+            "a",
+            "button",
+            ".box:first-child",
+            ".box__last .title",
+            ".box:last-child",
+            "div > div > input",
+            "span:nth-last-child(-n+1)",
+            "div div div.box.box__last div  h3",
+            ".box__footer-span + .box__footer-link + .input",
+            "div", "div.box:not(:empty)",
+            "div.box:not(.box__middle)",
+            "span:not(.box__footer-span)",
+            "* span", "box__footer-span ~ a",
+            "a:link",
+            "* div",
+            "div  div  span",
+            "[href^='#li']",
+            "div div span + a + input",
+            ".box span:only-child",
+            "div div span + a",
+            "div > div > span",
+            "div:last-child",
+            "[href='#link-f']",
+            "[href*='li']",
+            "div * ",
+            "a:hover"
+        ].splice(0, 17),
+        datasets: [
+            {
+                label: "Desktop Mac OSX Chromium",
+                fillColor: "rgba(20, 220, 20,1)",
+                strokeColor: "rgba(20,220,20,1)",
+                pointColor: "rgba(20,220,20,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(20,220,220,1)",
+                data: [0.17, 0.00, 1.17, 1.08, 1.58, 1.67, 1.50, 1.17, 2.25, 1.50, 1.50, 1.17, 1.58, 1.92, 2.17, 1.33, 1.67, 1.33, 1.67, 1.92, 1.75, 2.33, 1.83, 1.42, 2.50, 1.50, 1.92, 3.67, 2.58, 2.42, 3.92, 3.00, 3.92, 1.75].splice(0, 17)
+            },
+            {
+                label: "Desktop Mac OSX FF",
+                fillColor: "rgba(243,98,35,1)",
+                strokeColor: "rgba(243,98,35,1)",
+                pointColor: "rgba(243,98,35,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(255,236,194,1)",
+                data: [0.08, 0.00, 5.33, 5.58, 6.75, 0.05, 4.83, 4.50, 6.42, 4.25, 5.17, 4.00, 5.08, 2.73, 4.58, 4.33, 4.67, 3.75, 5.00, 6.83, 3.50, 4.25, 3.95, 4.67, 5.83, 3.33, 5.58, 4.50, 3.58, 6.78, 6.50, 6.33, 6.25, 3.08].splice(0, 17)
+            },
+            {
+                label: "Windows 7 Chrome",
+                fillColor: "rgba(0, 51, 153, 1)",
+                strokeColor: "rgba(0, 51, 153, 1)",
+                pointColor: "rgba(0, 51, 153, 1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(0, 51, 153, 1)",
+                data: [0.00, 0.00, 4.00, 5.25, 5.00, 5.75, 4.75, 3.75, 5.00, 3.75, 5.50, 7.75, 7.50, 6.50, 5.50, 5.25, 7.00, 6.50, 8.75, 8.25, 7.25, 8.00, 10.00, 9.50, 10.00, 8.25, 7.75, 10.25, 9.75, 8.00, 8.00, 8.75, 14.25, 7.25].splice(0, 17)
+            },
+            {
+                label: "Samsung Nexus",
+                fillColor: "rgba(51, 100, 100, 1)",
+                strokeColor: "rgba(51, 100, 100, 1)",
+                pointColor: "rgba(51, 100, 100, 1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(51, 100, 100, 1)",
+                data: [1.00, 0.00, 18.00, 21.00, 23.00, 20.00, 17.00, 17.00, 21.00, 17.00, 21.00, 26.00, 28.00, 23.00, 22.00, 17.00, 26.00, 25.00, 29.00, 27.00, 26.00, 27.00, 31.00, 33.00, 35.00, 32.00, 27.00, 35.00, 30.00, 33.00, 77.00, 32.00, 44.00, 28.00].splice(0, 17)
+            },
+            {
+                label: "Nexus 4",
+                fillColor: "rgba(51, 187, 205, 1)",
+                strokeColor: "rgba(51, 187, 205, 1)",
+                pointColor: "rgba(51, 187, 205, 1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(51, 187, 205, 1)",
+                data: [0.00, 1.00, 18.00, 22.00, 24.00, 21.00, 21.00, 19.00, 22.00, 20.00, 23.00, 28.00, 31.00, 24.00, 22.00, 21.00, 28.00, 28.00, 32.00, 30.00, 28.00, 30.00, 37.00, 53.00, 35.00, 30.00, 31.00, 38.00, 33.00, 32.00, 33.00, 35.00, 52.00, 30.00].splice(0, 17)
+            },
+            {
+                label: "IPad mini 2",
+                fillColor: "rgba(77,34,14,1)",
+                strokeColor: "rgba(77,34,14,1)",
+                pointColor: "rgba(77,34,14,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(77,34,14,1)",
+                data: [0.00, 0.00, 17.00, 15.00, 14.00, 17.00, 11.00, 9.00, 18.00, 15.00, 17.00, 16.00, 18.00, 13.00, 19.00, 10.00, 20.00, 19.00, 17.00, 15.00, 16.00, 17.00, 15.00, 14.00, 25.00, 15.00, 16.00, 18.00, 14.00, 17.00, 15.00, 29.00, 31.00, 17.00].splice(0, 17)
+            }
+        ]
+    };
+    var ctx4 = document.getElementById("myChart4").getContext("2d");
+    Chart.global = {
+        scaleSteps: 1
+    };
+    var data4 = {
+        labels: ["#box2001",
+            "* #box1992",
+            ".box__middle div  h2",
+            ".container > .box__footer > .box__footer-span",
+            ".container .box__footer .box__footer-span",
+            ".box.box__last:after",
+            "a",
+            "button",
+            ".box:first-child",
+            ".box__last .title",
+            ".box:last-child",
+            "div > div > input",
+            "span:nth-last-child(-n+1)",
+            "div div div.box.box__last div  h3",
+            ".box__footer-span + .box__footer-link + .input",
+            "div", "div.box:not(:empty)",
+            "div.box:not(.box__middle)",
+            "span:not(.box__footer-span)",
+            "* span", "box__footer-span ~ a",
+            "a:link",
+            "* div",
+            "div  div  span",
+            "[href^='#li']",
+            "div div span + a + input",
+            ".box span:only-child",
+            "div div span + a",
+            "div > div > span",
+            "div:last-child",
+            "[href='#link-f']",
+            "[href*='li']",
+            "div * ",
+            "a:hover"
+        ].splice(17),
+        datasets: [
+            {
+                label: "Desktop Mac OSX Chromium",
+                fillColor: "rgba(20, 220, 20,1)",
+                strokeColor: "rgba(20,220,20,1)",
+                pointColor: "rgba(20,220,20,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(20,220,220,1)",
+                data: [0.17, 0.00, 1.17, 1.08, 1.58, 1.67, 1.50, 1.17, 2.25, 1.50, 1.50, 1.17, 1.58, 1.92, 2.17, 1.33, 1.67, 1.33, 1.67, 1.92, 1.75, 2.33, 1.83, 1.42, 2.50, 1.50, 1.92, 3.67, 2.58, 2.42, 3.92, 3.00, 3.92, 1.75].splice(17)
+            },
+            {
+                label: "Desktop Mac OSX FF",
+                fillColor: "rgba(243,98,35,1)",
+                strokeColor: "rgba(243,98,35,1)",
+                pointColor: "rgba(243,98,35,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(255,236,194,1)",
+                data: [0.08, 0.00, 5.33, 5.58, 6.75, 0.05, 4.83, 4.50, 6.42, 4.25, 5.17, 4.00, 5.08, 2.73, 4.58, 4.33, 4.67, 3.75, 5.00, 6.83, 3.50, 4.25, 3.95, 4.67, 5.83, 3.33, 5.58, 4.50, 3.58, 6.78, 6.50, 6.33, 6.25, 3.08].splice(17)
+            },
+            {
+                label: "Windows 7 Chrome",
+                fillColor: "rgba(0, 51, 153, 1)",
+                strokeColor: "rgba(0, 51, 153, 1)",
+                pointColor: "rgba(0, 51, 153, 1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(0, 51, 153, 1)",
+                data: [0.00, 0.00, 4.00, 5.25, 5.00, 5.75, 4.75, 3.75, 5.00, 3.75, 5.50, 7.75, 7.50, 6.50, 5.50, 5.25, 7.00, 6.50, 8.75, 8.25, 7.25, 8.00, 10.00, 9.50, 10.00, 8.25, 7.75, 10.25, 9.75, 8.00, 8.00, 8.75, 14.25, 7.25].splice(17)
+            },
+            {
+                label: "Samsung Nexus",
+                fillColor: "rgba(51, 100, 100, 1)",
+                strokeColor: "rgba(51, 100, 100, 1)",
+                pointColor: "rgba(51, 100, 100, 1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(51, 100, 100, 1)",
+                data: [1.00, 0.00, 18.00, 21.00, 23.00, 20.00, 17.00, 17.00, 21.00, 17.00, 21.00, 26.00, 28.00, 23.00, 22.00, 17.00, 26.00, 25.00, 29.00, 27.00, 26.00, 27.00, 31.00, 33.00, 35.00, 32.00, 27.00, 35.00, 30.00, 33.00, 77.00, 32.00, 44.00, 28.00].splice(17)
+            },
+            {
+                label: "Nexus 4",
+                fillColor: "rgba(51, 187, 205, 1)",
+                strokeColor: "rgba(51, 187, 205, 1)",
+                pointColor: "rgba(51, 187, 205, 1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(51, 187, 205, 1)",
+                data: [0.00, 1.00, 18.00, 22.00, 24.00, 21.00, 21.00, 19.00, 22.00, 20.00, 23.00, 28.00, 31.00, 24.00, 22.00, 21.00, 28.00, 28.00, 32.00, 30.00, 28.00, 30.00, 37.00, 53.00, 35.00, 30.00, 31.00, 38.00, 33.00, 32.00, 33.00, 35.00, 52.00, 30.00].splice(17)
+            },
+            {
+                label: "IPad mini 2",
+                fillColor: "rgba(77,34,14,0.2)",
+                strokeColor: "rgba(77,34,14,1)",
+                pointColor: "rgba(77,34,14,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(77,34,14,1)",
+                data: [0.00, 0.00, 17.00, 15.00, 14.00, 17.00, 11.00, 9.00, 18.00, 15.00, 17.00, 16.00, 18.00, 13.00, 19.00, 10.00, 20.00, 19.00, 17.00, 15.00, 16.00, 17.00, 15.00, 14.00, 25.00, 15.00, 16.00, 18.00, 14.00, 17.00, 15.00, 29.00, 31.00, 17.00].splice(17)
+            }
+        ]
+    };
+    var ctx5 = document.getElementById("myChart5").getContext("2d");
+    Chart.global = {
+        scaleSteps: 1
+    };
+    var data5 = {
+        labels: ["div:nth-child(-n+1)",
+            "div:nth-child(200)",
+            "div:nth-last-child(-n+1)",
+            "div:nth-of-type(200)"
+        ],
+        datasets: [
+            {
+                label: "Desktop Mac OSX Chromium",
+                fillColor: "rgba(20,220,20,1)",
+                strokeColor: "rgba(20,220,20,1)",
+                pointColor: "rgba(20,220,20,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: [617.92, 776.38, 693.00, 673.08]
+            },
+            {
+                label: "Desktop Mac OSX FF",
+                fillColor: "rgba(243,98,35,1)",
+                strokeColor: "rgba(243,98,35,1)",
+                pointColor: "rgba(243,98,35,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(243,98,35,1)",
+                data: [19.67, 19.00, 21.50, 21.67]
+            },
+            {
+                label: "Windows 7 Chrome",
+                fillColor: "rgba(0, 51, 153, 1)",
+                strokeColor: "rgba(0, 51, 153, 1)",
+                pointColor: "rgba(0, 51, 153, 1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(0, 51, 153, 1)",
+                data: [2999.75, 2983.00, 3082.75, 3814.50]
+            },
+            {
+                label: "Samsung Nexus",
+                fillColor: "rgba(51, 100, 100, 1)",
+                strokeColor: "rgba(51, 100, 100,1)",
+                pointColor: "rgba(51, 100, 100,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(51, 100, 100, 1)",
+                data: [2938.00, 2880.00, 2957.00, 6520.00]
+            },
+            {
+                label: "Nexus 4",
+                fillColor: "rgba(51, 187, 205, 1)",
+                strokeColor: "rgba(51, 187, 205, 1)",
+                pointColor: "rgba(51, 187, 205, 1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(51, 187, 205, 1)",
+                data: [2186.00, 2192.00, 2482.00, 3632.00]
+            },
+            {
+                label: "IPad mini 2",
+                fillColor: "rgba(77,34,14,1)",
+                strokeColor: "rgba(77,34,14,1)",
+                pointColor: "rgba(77,34,14,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(77,34,14,1)",
+                data: [4053.00, 3985.00, 2067.00, 2977.0]
+            },
+
+        ]
+    };
+    var ctx0 = document.getElementById("myChart0").getContext("2d");
+    Chart.global = {
+        scaleSteps: 4,
+        responsive: false
+    };
+    var data0 = {
+        labels: [
+            "0/62 ya.ru",//0
+            "84/5212 YouTube",//2.14
+            "106/1519 AOL",//5.14
+            "160/2194 eBay",//3.32
+            "1096/2010 E1.ru",//3.06
+            "1750/1253 Wikipedia",//0.61
+            "1849/331 Google",//0.8
+            "1914/1129 Mail.ru",//0.56
+            "2882/1812 Facebook",//1.28
+            "3867/763 Yandex",//1.24
+            "4105/1004 habrahabr",//2.14
+            "6409/1119 Urfu",//1.81
+            "7310/1726 vk.com"//1.87
+        ],
+        datasets: [
+            {
+                label: "Desktop Mac OSX Chromium Paint",
+                fillColor: "rgba(20,220,220,.2)",
+                strokeColor: "rgba(20,220,220,1)",
+                pointColor: "rgba(20,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: [
+                    0,
+                    2.14,
+                    5.14,
+                    3.32,
+                    3.06,
+                    0.61,
+                    0.8,
+                    0.56,
+                    1.28,
+                    1.24,
+                    2.14,
+                    1.81,
+                    1.87
+                ]
+            },
+            {
+                label: "Desktop Mac OSX Chromium Load",
+                fillColor: "rgba(255,236,194,.2)",
+                strokeColor: "rgba(243,98,35,1)",
+                pointColor: "rgba(243,98,35,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: [
+                    1.31,
+                    3.35,
+                    6.77,
+                    5.24,
+                    4.14,
+                    2.70,
+                    2.42,
+                    1.6,
+                    2.46,
+                    2.08,
+                    3.19,
+                    3.97,
+                    3.50
+                ]
+            }
+        ]
+    };
+    Reveal.addEventListener('slidechanged', function (e) {
+        var options = {
+            scaleLineColor: "rgba(255,255,255,.5)",
+            scaleLabel: "<%=value%> ms",
+            scaleFontColor: "#fff",
+            scaleFontSize: 14,
+            scaleGridLineColor: "rgba(255,255,255,.5)"
+        };
+        if (e.indexh === 5) {
+            new Chart(ctx).Line(data, options);
+        }
+        if (e.indexh === 6) {
+            new Chart(ctx2).Line(data2, options);
+        }
+        if (e.indexh === 7) {
+            new Chart(ctx3).Bar(data3, options);
+        }
+        if (e.indexh === 8) {
+            new Chart(ctx4).Bar(data4, options);
+        }
+        if (e.indexh === 9) {
+            new Chart(ctx5).Bar(data5, options);
+        }
+        if (e.indexh === 11) {
+            options = {
+                scaleLineColor: "rgba(255,255,255,1)",
+                scaleLabel: "<%=value%> s",
+                scaleFontColor: "#fff",
+                scaleFontSize: 16,
+                scaleGridLineColor: "rgba(255,255,255,1)"
+            };
+            new Chart(ctx0).Line(data0, options);
+        }
+    });
+</script>
+</body>
+</html>
